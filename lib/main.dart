@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
         //Wrap body into ListView so the contents remain scrollable on smaller screen sizes
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .20),
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .22),
             child: new Container(
               alignment: Alignment.bottomCenter,
               child: Column(
