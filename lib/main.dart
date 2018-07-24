@@ -72,22 +72,25 @@ class _HomePageState extends State<HomePage> {
         //Wrap body into ListView so the contents remain scrollable on smaller screen sizes
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * .35), //Dynamically Center Input Widget
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Text(
-                'Find the best professor.',
-                style: new TextStyle(
-                  fontSize: 24.0,
-                ),
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .20),
+            child: new Container(
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Text(
+                    'Find the best professor.',
+                    style: new TextStyle(
+                      fontSize: 24.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: new CourseForm(),
+                  ),
+                ],
               ),
-              new Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: new CourseForm(),
-              ),
-            ],
+            ),
           ),
         ],
       ),
