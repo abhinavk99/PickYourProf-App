@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pick_your_prof/widgets/course_form.dart';
 
-void main() => runApp(new PickYourProf());
+void main() => runApp(PickYourProf());
 
 class PickYourProf extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'PickYourProf',
-      theme: new ThemeData(
+      theme: ThemeData(
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -31,7 +31,7 @@ class PickYourProf extends StatelessWidget {
           900: const Color(0xFFbf5700),
         }),
       ),
-      home: new HomePage(title: 'PickYourProf'),
+      home: HomePage(title: 'PickYourProf'),
     );
   }
 }
@@ -51,7 +51,7 @@ class HomePage extends StatefulWidget {
   final String title;
 
   @override
-  _HomePageState createState() => new _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -62,33 +62,19 @@ class _HomePageState extends State<HomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return new Scaffold(
-      appBar: new AppBar(
+    return Scaffold(
+      appBar: AppBar(
         // Here we take the value from the HomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: new Text(widget.title),
+        title: Text(widget.title),
       ),
       body: ListView(
         //Wrap body into ListView so the contents remain scrollable on smaller screen sizes
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * .35), //Dynamically Center Input Widget
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * .40), //Dynamically Center Input Widget
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Text(
-                'Find the best professor.',
-                style: new TextStyle(
-                  fontSize: 24.0,
-                ),
-              ),
-              new Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: new CourseForm(),
-              ),
-            ],
-          ),
+          CourseForm(),
         ],
       ),
     );
