@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pick_your_prof/widgets/course_form.dart';
 
 void main() => runApp(new PickYourProf());
 
@@ -17,8 +18,8 @@ class PickYourProf extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: const MaterialColor(0xFFbf5700, const <int, Color> {
-          50:  const Color(0xFFbf5700),
+        primarySwatch: const MaterialColor(0xFFbf5700, const <int, Color>{
+          50: const Color(0xFFbf5700),
           100: const Color(0xFFbf5700),
           200: const Color(0xFFbf5700),
           300: const Color(0xFFbf5700),
@@ -54,7 +55,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called.
@@ -80,108 +80,7 @@ class _HomePageState extends State<HomePage> {
             ),
             new Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: new _CourseForm(),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _CourseForm extends StatefulWidget {
-  @override
-  _CourseFormState createState() {
-    return new _CourseFormState();
-  }
-}
-
-class _CourseData {
-  String department = '';
-  String courseNumber = '';
-}
-
-class _CourseFormState extends State<_CourseForm> {
-  // Create a global key that will uniquely identify the Form widget and allow
-  // us to validate the form
-  //
-  // Note: This is a `GlobalKey<FormState>`, not a GlobalKey<_CourseFormState>!
-  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  _CourseData _data = new _CourseData();
-
-  @override
-  Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey we created above
-    return new Container(
-      alignment: Alignment.center,
-      child: new Form(
-        key: this._formKey,
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Container(
-              width: 350.0,
-              child: new TextFormField(
-                decoration: new InputDecoration(
-                  labelText: 'Department',
-                  hintText: 'Ex: CS'
-                ),
-                textAlign: TextAlign.center,
-                validator: (String value) {
-                  if (value.isEmpty) {
-                    return 'Please enter a department';
-                  }
-                  return null;
-                },
-                onSaved: (String value) {
-                  this._data.department = value;
-                },
-              ),
-            ),
-            new Container(
-              width: 350.0,
-              child: new TextFormField(
-                decoration: new InputDecoration(
-                  labelText: 'Course Number',
-                  hintText: 'Ex: 314'
-                ),
-                textAlign: TextAlign.center,
-                validator: (String value) {
-                  if (value.isEmpty) {
-                    return 'Please enter a course number';
-                  }
-                  return null;
-                },
-                onSaved: (String value) {
-                  this._data.courseNumber = value;
-                },
-              ),
-            ),
-            new Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30.0),
-              child: new RaisedButton(
-                onPressed: () {
-                  if (this._formKey.currentState.validate()) {
-                    _formKey.currentState.save();
-                    Scaffold
-                      .of(context)
-                      .showSnackBar(
-                      new SnackBar(
-                        content: Text(
-                          'Getting information for ${_data.department} ${_data.courseNumber}'
-                        )
-                      )
-                    );
-                  }
-                },
-                child: new Text(
-                  'Submit',
-                  style: new TextStyle(
-                      color: Colors.white
-                  ),
-                ),
-                color: Theme.of(context).accentColor,
-              ),
+              child: new CourseForm(),
             ),
           ],
         ),
