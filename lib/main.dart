@@ -68,22 +68,28 @@ class _HomePageState extends State<HomePage> {
         // the App.build method, and use it to set our appbar title.
         title: new Text(widget.title),
       ),
-      body: new Container(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text(
-              'Find the best professor.',
-              style: new TextStyle(
-                fontSize: 24.0,
+      body: ListView(
+        //Wrap body into ListView so the contents remain scrollable on smaller screen sizes
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * .35), //Dynamically Center Input Widget
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Text(
+                'Find the best professor.',
+                style: new TextStyle(
+                  fontSize: 24.0,
+                ),
               ),
-            ),
-            new Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: new CourseForm(),
-            ),
-          ],
-        ),
+              new Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: new CourseForm(),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
