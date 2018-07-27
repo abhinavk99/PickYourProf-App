@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pick_your_prof/data/course_data.dart';
+import 'package:pick_your_prof/widgets/result_card.dart';
 
 class ResultsScreen extends StatefulWidget {
   CourseData courseQuery; //Holds the CourseData object passed in from the previous screen
@@ -12,6 +13,20 @@ class ResultsScreen extends StatefulWidget {
 class _ResultsScreenState extends State<ResultsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Results"),
+      ),
+      body: ListView(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(top: 12.0),
+          ),
+          ResultCard('Michael Scott', '4.83', ''),
+          ResultCard('Gordon Novak', '3.7', ''),
+          ResultCard('Lucas', '1.3', ''),
+        ],
+      ),
+    );
   }
 }
