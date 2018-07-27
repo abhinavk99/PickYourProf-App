@@ -22,9 +22,9 @@ class _ResultsScreenState extends State<ResultsScreen> {
           Padding(
             padding: EdgeInsets.only(top: 12.0),
           ),
-          ResultCard('Michael Scott', '4.83', ''),
-          ResultCard('Gordon Novak', '3.7', ''),
-          ResultCard('Lucas', '1.3', ''),
+          ResultCard('Michael Scott', '4.83', 'http://www.ratemyprofessors.com/ShowRatings.jsp?tid=137818'),
+          ResultCard('Gordon Novak', '3.7', 'http://www.ratemyprofessors.com/ShowRatings.jsp?tid=1297191'),
+          ResultCard('Lucas', '1.3', 'https://www.google.com/'),
         ],
       ),
     );

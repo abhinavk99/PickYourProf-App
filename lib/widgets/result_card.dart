@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 
 class ResultCard extends StatelessWidget {
   String profName;
@@ -30,7 +31,7 @@ class ResultCard extends StatelessWidget {
                     ),
                   ),
                   FlatButton(
-                    onPressed: null, //Launch chrome webview with professor link
+                    onPressed: () => _launchURL(context, ratemyprofLink), //Launch chrome webview with professor link
                     child: Text('More Info'),
                   ),
                 ],
@@ -52,5 +53,22 @@ class ResultCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _launchURL(BuildContext context, String url) async {
+    try {
+      await launch(
+        url,
+        option: new CustomTabsOption(
+            toolbarColor: Theme.of(context).primaryColor,
+            enableDefaultShare: true,
+            enableUrlBarHiding: true,
+            showPageTitle: true,
+            animation: new CustomTabsAnimation.slideIn()),
+      );
+    } catch (e) {
+      // An exception is thrown if browser app is not installed on Android device.
+      debugPrint(e.toString());
+    }
   }
 }
