@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pick_your_prof/data/course_data.dart';
+import 'package:pick_your_prof/views/results.dart';
 
 class CourseForm extends StatefulWidget {
   @override
@@ -81,6 +82,7 @@ class CourseFormState extends State<CourseForm> {
                           if (this._formKey.currentState.validate()) {
                             _formKey.currentState.save();
                             Scaffold.of(context).showSnackBar(SnackBar(content: Text('Getting information for ${data.department} ${data.courseNumber}')));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsScreen(data)));
                           }
                         },
                         child: Text(
