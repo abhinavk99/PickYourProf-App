@@ -12,7 +12,7 @@ class CourseFormState extends State<CourseForm> {
   //
   // Note: This is a `GlobalKey<FormState>`, not a GlobalKey<_CourseFormState>!
   final _formKey = GlobalKey<FormState>();
-  CourseData data = CourseData();
+  CourseData data = CourseData("", "");
 
   @override
   Widget build(BuildContext context) {
