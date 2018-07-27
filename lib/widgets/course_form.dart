@@ -82,6 +82,7 @@ class CourseFormState extends State<CourseForm> {
                           if (this._formKey.currentState.validate()) {
                             _formKey.currentState.save();
                             Scaffold.of(context).showSnackBar(SnackBar(content: Text('Getting information for ${data.department} ${data.courseNumber}')));
+                            //Maybe we could await the results method here and then navigate to the new page?
                             Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsScreen(data)));
                           }
                         },
