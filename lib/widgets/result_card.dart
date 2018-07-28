@@ -31,7 +31,8 @@ class ResultCard extends StatelessWidget {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () => _launchURL(context, ratemyprofLink), //Launch chrome webview with professor link
+                    //Enable button only if link is available
+                    onPressed: ratemyprofLink != '' ? () => _launchURL(context, ratemyprofLink) : null,
                     child: Text('More Info'),
                   ),
                 ],

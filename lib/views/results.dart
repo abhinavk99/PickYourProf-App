@@ -24,7 +24,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
           ),
           ResultCard('Michael Scott', '4.83', 'http://www.ratemyprofessors.com/ShowRatings.jsp?tid=137818'),
           ResultCard('Gordon Novak', '3.7', 'http://www.ratemyprofessors.com/ShowRatings.jsp?tid=1297191'),
-          ResultCard('Lucas', '1.3', 'https://www.google.com/'),
+          ResultCard('Lucas', '1.3', ''),
         ],
       ),
     );
