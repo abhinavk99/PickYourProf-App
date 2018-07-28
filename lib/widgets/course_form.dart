@@ -13,7 +13,8 @@ class CourseFormState extends State<CourseForm> {
   //
   // Note: This is a `GlobalKey<FormState>`, not a GlobalKey<_CourseFormState>!
   final _formKey = GlobalKey<FormState>();
-  CourseData data = CourseData("", "");
+  String courseDepartment = '';
+  String courseNumber = '';
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class CourseFormState extends State<CourseForm> {
                           return null;
                         },
                         onSaved: (String value) {
-                          this.data.department = value;
+                          courseDepartment = value;
                         },
                       ),
                     ),
@@ -71,7 +72,7 @@ class CourseFormState extends State<CourseForm> {
                           return null;
                         },
                         onSaved: (String value) {
-                          this.data.courseNumber = value;
+                          courseNumber = value;
                         },
                       ),
                     ),
@@ -81,9 +82,10 @@ class CourseFormState extends State<CourseForm> {
                         onPressed: () {
                           if (this._formKey.currentState.validate()) {
                             _formKey.currentState.save();
-                            Scaffold.of(context).showSnackBar(SnackBar(content: Text('Getting information for ${data.department} ${data.courseNumber}')));
+                            CourseData currentCourse = CourseData(courseDepartment, courseNumber);
+                            Scaffold.of(context).showSnackBar(SnackBar(content: Text('Getting information for ${courseDepartment} ${courseNumber}')));
                             //Maybe we could await the results method here and then navigate to the new page?
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsScreen(data)));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsScreen(currentCourse)));
                           }
                         },
                         child: Text(
