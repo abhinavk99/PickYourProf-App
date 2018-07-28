@@ -10,4 +10,8 @@ class Professor {
   double get score => _score;
 
   String get link => _link;
+
+  @override
+  String toString() => '{name: $_name, score: $_score, link: $_link}';
+
 }
