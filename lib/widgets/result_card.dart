@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
+import 'package:pick_your_prof/data/professor.dart';
 
 class ResultCard extends StatelessWidget {
-  String profName;
-  String score;
-  String ratemyprofLink; //Hold the link to his/her rate my professor page
+  Professor professor;
 
-  ResultCard(this.profName, this.score, this.ratemyprofLink);
+  ResultCard(this.professor);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +19,7 @@ class ResultCard extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Text(
-                    this.profName,
+                    this.professor.name,
                     style: TextStyle(
                       fontSize: 24.0,
                     ),
@@ -32,7 +31,7 @@ class ResultCard extends StatelessWidget {
                   ),
                   FlatButton(
                     //Enable button only if link is available
-                    onPressed: ratemyprofLink != '' ? () => _launchURL(context, ratemyprofLink) : null,
+                    onPressed: this.professor.link != '' ? () => _launchURL(context, this.professor.link) : null,
                     child: Text('More Info'),
                   ),
                 ],
@@ -40,7 +39,7 @@ class ResultCard extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Text(
-                    'Score: ' + this.score,
+                    'Score: ' + this.professor.score.toString(),
                   ),
                   Expanded(
                     child: Padding(
