@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pick_your_prof/data/course_data.dart';
-import 'package:pick_your_prof/widgets/result_card.dart';
 import 'package:pick_your_prof/data/professor.dart';
+import 'package:pick_your_prof/widgets/result_card.dart';
 import 'package:pick_your_prof/util/algorithm.dart';
 
 class ResultsScreen extends StatefulWidget {
@@ -14,13 +14,34 @@ class ResultsScreen extends StatefulWidget {
 
 class _ResultsScreenState extends State<ResultsScreen> {
   List<Professor> _professors;
+  Widget _professorListWidget; //Will initialize as a progress indicator in initState but later updated via buildProfessorList();
+
+  //Create the ListView holding the List of ResultCards based on a user's query
+  Widget buildProfessorList() {
+    return ListView.builder(
+      itemCount: _professors.length,
+      itemBuilder: (BuildContext context, int index) {
+        if (index == 0) {
+          //Insert additional padding at the very top of the ListView for padding consistency
+          return Padding(
+            padding: EdgeInsets.only(top: 12.0),
+            child: ResultCard(_professors[index]),
+          );
+        } else {
+          return ResultCard(_professors[index]);
+        }
+      },
+    );
+  }
 
   @override
   void initState() {
     super.initState();
+    _professorListWidget = CircularProgressIndicator();
     getProfessors(widget.courseQuery).then((professors) {
       setState(() {
         _professors = professors;
+        _professorListWidget = buildProfessorList();
       });
     });
   }
@@ -31,16 +52,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
       appBar: AppBar(
         title: Text("Results"),
       ),
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(top: 12.0),
-          ),
-          ResultCard(Professor('Michael Scott', 4.83, 'http://www.ratemyprofessors.com/ShowRatings.jsp?tid=137818')),
-          ResultCard(Professor('Gordon Novak', 3.7, 'http://www.ratemyprofessors.com/ShowRatings.jsp?tid=1297191')),
-          ResultCard(Professor('Lucas', 1.3, '')),
-        ],
-      ),
+      body: _professorListWidget,
     );
   }
 }
