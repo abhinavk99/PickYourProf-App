@@ -32,18 +32,16 @@ Future<List<Professor>> getProfessors(CourseData courseData) async {
   profRows.forEach((row) {
     // Reorder name into first name last name
     List<String> splitName = row['name'].split(new RegExp(r'\s+'));
-    String finalName = splitName[1] + ' ' + splitName[0];
+    String finalName = capitalize(splitName[1]) + ' ' + capitalize(splitName[0]);
     profNames.add(finalName);
     // Stores info of percentage of each class that got each grade
     int totalStu = 0;
     row.forEach((k, numStu) {
-      if (k != 'name')
-        totalStu += numStu;
+      if (k != 'name') totalStu += numStu;
     });
     List<double> currPerc = [];
     row.forEach((k, numStu) {
-      if (k != 'name')
-        currPerc.add(numStu / totalStu);
+      if (k != 'name') currPerc.add(numStu / totalStu);
     });
     percentages.add(currPerc);
   });
@@ -73,4 +71,13 @@ List<double> getScores(List<String> profNames, List<List<double>> percentages) {
     scores.add(score);
   }
   return scores;
+}
+
+//Makes names from database read more naturally by only capitalizing the first letter
+String capitalize(String name) {
+  if (name.length > 1) {
+    return name[0].toUpperCase() + name.substring(1).toLowerCase();
+  } else {
+    return name.toUpperCase();
+  }
 }
