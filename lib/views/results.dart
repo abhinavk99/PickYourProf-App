@@ -52,7 +52,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
       appBar: AppBar(
         title: Text("Results"),
       ),
-      body: _professorListWidget,
+      body: Center(child: _professorListWidget),
     );
   }
 }

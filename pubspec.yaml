@@ -7,6 +7,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_custom_tabs: "^0.2.0"
   sqflite: any
+  http: ^0.11.3+16
+  html: any
 
 dev_dependencies:
   flutter_test:
