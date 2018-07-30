@@ -3,6 +3,15 @@ An app written in Flutter that personalizes professor choices (port of Node.js a
 
 Ported from https://github.com/sandeepnamburi/PickYourProf
 
+## Screenshots
+
+[<img src="./README_assets/Home.jpg" width=160>](/README_assets/Home.jpg)
+[<img src="./README_assets/CS314Entry.jpg" width=160>](/README_assets/CS314Entry.jpg)
+[<img src="./README_assets/CS314Results.jpg" width=160>](/README_assets/CS314Results.jpg)
+[<img src="./README_assets/MikeScottInfo.jpg" width=160>](/README_assets/MikeScottInfo.jpg)
+[<img src="./README_assets/CS429Results.jpg" width=160>](/README_assets/CS429Results.jpg)
+
+
 ### What it does
 Pick My Prof analayzes the UT directory of professors and gives your recommendations for professors based on Rate My Professor ratings and university reviews. It currently works for every single course and professor in the UT Austin database.
 
