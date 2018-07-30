@@ -68,7 +68,7 @@ List<double> getScores(List<String> profNames, List<List<double>> percentages) {
     avgGpa *= 5 / 4;
 
     score = avgGpa * 2;
-    scores.add(score);
+    scores.add(num.parse(score.toStringAsFixed(2)));
   }
   return scores;
 }
