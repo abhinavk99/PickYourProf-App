@@ -10,6 +10,8 @@ import 'package:http/http.dart';
 import 'package:html/parser.dart' show parse;
 import 'package:html/dom.dart';
 
+List<String> profLinks = [];
+
 Future<List<Professor>> getProfessors(CourseData courseData) async {
   String databasesPath = await getDatabasesPath();
   String path = join(databasesPath, 'grade_data.db');
@@ -54,10 +56,11 @@ Future<List<Professor>> getProfessors(CourseData courseData) async {
   List<Professor> professors = [];
   List<double> scores = getScores(profNames, responses, percentages);
   for (int i = 0; i < profNames.length; i++) {
-    professors.add(Professor(profNames[i], scores[i], ''));
+    professors.add(Professor(profNames[i], scores[i], profLinks[i]));
   }
   professors.sort((a, b) => b.score.compareTo(a.score));
   print(professors);
+  profLinks = [];
   return professors;
 }
 
@@ -155,7 +158,7 @@ Future<List<Map<String, dynamic>>> getProfessorsInfo(List<String> profNames) asy
       // Scrape info of professor
       response = await get('http://www.ratemyprofessors.com' + endLink);
       document = parse(response.body);
-      print('http://www.ratemyprofessors.com' + endLink);
+      profLinks.add('http://www.ratemyprofessors.com' + endLink);
       Map<String, dynamic> responseMap = new Map<String, dynamic>();
       List<Element> divs = document.querySelectorAll('.grade');
       for (int i = 0; i < divs.length; i++) {
@@ -184,6 +187,7 @@ Future<List<Map<String, dynamic>>> getProfessorsInfo(List<String> profNames) asy
       }
       infoList.add(responseMap);
     } else {
+      profLinks.add('');
       infoList.add(Map<String, dynamic>());
     }
   }
