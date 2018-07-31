@@ -15,6 +15,6 @@ class Professor {
   String get link => _link;
 
   @override
-  String toString() => '{name: $_name, score: $_score, gpa: $_avgGPA link: $_link}';
+  String toString() => '{name: $_name, score: $_score, gpa: $_avgGPA, link: $_link}';
 
 }

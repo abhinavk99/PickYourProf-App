@@ -3,7 +3,7 @@ import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'package:pick_your_prof/data/professor.dart';
 
 class ResultCard extends StatelessWidget {
-  Professor professor;
+  final Professor professor;
 
   ResultCard(this.professor);
   @override

@@ -5,7 +5,7 @@ import 'package:pick_your_prof/widgets/result_card.dart';
 import 'package:pick_your_prof/util/algorithm.dart';
 
 class ResultsScreen extends StatefulWidget {
-  CourseData courseQuery; //Holds the CourseData object passed in from the previous screen
+  final CourseData courseQuery; //Holds the CourseData object passed in from the previous screen
   ResultsScreen(this.courseQuery); //Constructor for the current screen, requires a CourseData object
 
   @override
