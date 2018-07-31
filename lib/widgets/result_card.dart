@@ -41,6 +41,12 @@ class ResultCard extends StatelessWidget {
                   Text(
                     'Score: ' + this.professor.score.toString(),
                   ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Text(
+                    'Average GPA: ' + this.professor.avgGPA.toString(),
+                    ),
+                  ),
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 1.0),

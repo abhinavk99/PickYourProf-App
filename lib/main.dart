@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         //Wrap body into ListView so the contents remain scrollable on smaller screen sizes
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .20), //Dynamically Center Input Widget
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .199), //Dynamically Center Input Widget
           ),
           CourseForm(),
         ],

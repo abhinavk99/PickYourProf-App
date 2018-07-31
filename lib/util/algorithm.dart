@@ -11,6 +11,7 @@ import 'package:html/parser.dart' show parse;
 import 'package:html/dom.dart';
 
 List<String> profLinks = [];
+List<double> profAvgGPA = [];
 
 Future<List<Professor>> getProfessors(CourseData courseData) async {
   String databasesPath = await getDatabasesPath();
@@ -56,7 +57,7 @@ Future<List<Professor>> getProfessors(CourseData courseData) async {
   List<Professor> professors = [];
   List<double> scores = getScores(profNames, responses, percentages);
   for (int i = 0; i < profNames.length; i++) {
-    professors.add(Professor(profNames[i], scores[i], profLinks[i]));
+    professors.add(Professor(profNames[i], scores[i], profAvgGPA[i], profLinks[i]));
   }
   professors.sort((a, b) => b.score.compareTo(a.score));
   print(professors);
@@ -94,6 +95,7 @@ List<double> getScores(List<String> profNames, List<Map<String, dynamic>> respon
     for (int j = 0; j < percentages[i].length; j++) {
       avgGpa += percentages[i][j] * GPA[j];
     }
+    profAvgGPA.add(num.parse(avgGpa.toStringAsFixed(2)));
     avgGpa *= 5 / 4;
 
     score = numProfs != 0 ? avgGpa + metricAverages[i] : avgGpa * 2;
