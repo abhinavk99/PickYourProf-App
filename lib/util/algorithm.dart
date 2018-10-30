@@ -37,7 +37,7 @@ Future<List<Professor>> getProfessors(CourseData courseData) async {
   List<List<double>> percentages = [];
   profRows.forEach((row) {
     // Reorder name into first name last name
-    List<String> splitName = row['name'].split(RegExp(r'\s+'));
+    List<String> splitName = row['name'].split(RegExp(r',?\s+'));
     String finalName = formatToken(splitName[1]) + ' ' + formatToken(splitName[0]);
     profNames.add(finalName);
     // Stores info of percentage of each class that got each grade
